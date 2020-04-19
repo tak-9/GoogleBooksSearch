@@ -1,14 +1,14 @@
 import React from "react";
-
+import imageNotAvail from "../img/no_cover_thumb.gif";
 
 function Book(props){
-    console.log("Book props",props);
-    // BUG: Harry Potter , this causes imageLinks to become undefined 
-    const title = props.data.volumeInfo.title;
-    const authors = props.data.volumeInfo.authors;
-    const description = props.data.volumeInfo.description;
-    const smallThumbnail = props.data.volumeInfo.imageLinks.smallThumbnail;
-    const infoLilnk = props.data.volumeInfo.infoLink;
+    // console.log("Book props",props);
+    const title = (typeof props.data.volumeInfo.title === "undefined") ? " " : props.data.volumeInfo.title ; 
+    const authors = (typeof props.data.volumeInfo.authors === "undefined") ? [] : props.data.volumeInfo.authors;
+    const description = (typeof props.data.volumeInfo.description === "undefined") ? " " : props.data.volumeInfo.description;
+    // Show replacement gif file if API does not provide imageLinks
+    const smallThumbnail = (typeof props.data.volumeInfo.imageLinks === "undefined" ? imageNotAvail : props.data.volumeInfo.imageLinks.smallThumbnail);
+    const infoLilnk = (typeof props.data.volumeInfo.infoLink === "undefined") ? " " : props.data.volumeInfo.infoLink;
 
     return (
         <div className="card mb-3">
@@ -20,8 +20,8 @@ function Book(props){
                     </div>
                     <div className="col-md-3">
                         <div className=" pull-right">
-                        <a href={infoLilnk} class="btn btn-primary" target="_blank">Detail</a> 
-                        <a href="#" class="btn btn-primary" target="_blank" style={{ marginLeft: '.5rem' }} >Save</a>
+                        <a href={infoLilnk} className="btn btn-primary" target="_blank">Detail</a> 
+                        <a href="#" className="btn btn-primary" target="_blank" style={{ marginLeft: '.5rem' }} >Save</a>
                         </div>
                     </div>
                 </div>

@@ -21,7 +21,7 @@ function Search() {
         <div className="container">
             <div className="card">
                 <div className="card-body">
-                    Book Search<p />
+                    <p className="font-weight-bold">Book Search</p>
                     <div className="form-group">
                         <input type="text" className="form-control" name="keyword" value={keyword}  onChange={e => setKeyword(e.target.value) }/>
                     </div>

@@ -11,13 +11,28 @@ function Book(props){
     const infoLilnk = props.data.volumeInfo.infoLink;
 
     return (
-        <div className="card">
+        <div className="card mb-3">
             <div className="card-body">
-                <i><h4 className="card-title">{title}</h4></i>
-                <i>Written by {authors.join(', ')}</i><p/>
-                <img className="img-fluid" src={smallThumbnail} width="100" /><p/>
-                <a href={infoLilnk} class="btn btn-primary" target="_blank">Detail</a><p/>
-                <p className="card-text">{description}</p>
+                <div className="row mb-3">
+                    <div className="col-md-9">
+                        <h4 className="card-title font-italic">{title}</h4>
+                        <span className="font-italic">Written by {authors.join(', ')}</span>
+                    </div>
+                    <div className="col-md-3">
+                        <div className=" pull-right">
+                        <a href={infoLilnk} class="btn btn-primary" target="_blank">Detail</a> 
+                        <a href="#" class="btn btn-primary" target="_blank" style={{ marginLeft: '.5rem' }} >Save</a>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-2">
+                        <img className="img-fluid" src={smallThumbnail} width="128" />
+                    </div>
+                    <div className="col-md-10">
+                        <p className="card-text">{description}</p>
+                    </div>
+                </div>
             </div>
         </div>
     )

@@ -1,20 +1,20 @@
 import React, {useState} from "react";
-import axios from "axios";
 import Book from "./Book";
+import * as API from "../utils/API";
 
 
 function Search() {
     const [keyword, setKeyword] = useState();
     const [books, setBooks] = useState([]);
 
-    const handleClick = e =>{
+    const handleClick = e => {
         e.preventDefault();
-        var url =  "https://www.googleapis.com/books/v1/volumes?q="+keyword;
-        axios.get(url)
-            .then((res)=>{
-                console.log("Response from URL: ",res.data.items);
-                setBooks(res.data.items);
-            })
+        var books = [];
+        API.getBooks(keyword)
+        .then((books)=>{
+            console.log("books", books);
+            setBooks(books)
+        });
     }
 
     const handleKeyPress = e => {

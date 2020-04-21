@@ -3,16 +3,14 @@ import imageNotAvail from "../img/no_cover_thumb.gif";
 import * as API from "../utils/API"
 
 function Book(props) {
-    console.log("Book props", props);
+    //console.log("Book props", props);
     const {title, authors, description, smallThumbnail, infoLilnk} = props.data;
     
     const saveButtonHandler = () => {
-        // console.log("saveButtonHandler");
         API.saveBook(props.data);
     };
 
     const deleteButtonHandler = () => {
-        console.log("deleteButtonHandler");
         API.deleteBook(props.data._id);
         props.triggerRenderList();   
     };

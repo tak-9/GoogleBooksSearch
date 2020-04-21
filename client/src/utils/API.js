@@ -7,7 +7,7 @@ export const getBooks = (title) => {
         var url =  "https://www.googleapis.com/books/v1/volumes?q=" + title;
         axios.get(url)
             .then((res)=>{
-                console.log("Response from URL: ", url, res.data.items);
+                //console.log("Response from URL: ", url, res.data.items);
                 var booksInfo = [];
                 booksInfo = res.data.items.map((item)=>{
                     // Format received data
@@ -25,7 +25,7 @@ export const getBooks = (title) => {
 
             })
             .catch((err)=>{
-                console.log("Error in getBooks(): ", err);
+                //console.log("Error in getBooks(): ", err);
                 resolve([{
                     title: "Search Error. Please try again later."
                 }]);
@@ -35,16 +35,15 @@ export const getBooks = (title) => {
 
 export const saveBook = (book) => {
     return new Promise(function(resolve, reject){
-        console.log("API saveBook()", book);
         var url = serverUrl + "/api/book";
 
         axios.post(url, book)
             .then((res)=>{
-                console.log("Response from URL: ", url, res);
+                //console.log("Response from URL: ", url, res);
                 resolve();
             })
             .catch((err)=>{
-                console.log("Error in saveBook(): ", err);
+                //console.log("Error in saveBook(): ", err);
                 resolve();
             })     
     })
@@ -55,11 +54,11 @@ export const getSavedBooks = (title) => {
         var url =  serverUrl + "/api/book";
         axios.get(url)
             .then((res)=>{
-                console.log("Response from URL: ", url, res);
+                //console.log("Response from URL: ", url, res);
                 resolve(res.data);
             })
             .catch((err)=>{
-                console.log("Error in getBooks(): ", err);
+                //console.log("Error in getBooks(): ", err);
                 resolve([{
                     volumeInfo: {
                         title: "Search Error. Please try again later."
@@ -71,15 +70,14 @@ export const getSavedBooks = (title) => {
 
 export const deleteBook = (id) => {
     return new Promise(function(resolve, reject){
-        console.log("API.deleteBook()");
         var url =  serverUrl + "/api/book/" + id;
         axios.delete(url)
             .then((res)=>{
-                console.log("Response from URL: ", url, res);
+                //console.log("Response from URL: ", url, res);
                 resolve(res.data);
             })
             .catch((err)=>{
-                console.log("Error in getBooks(): ", err);
+                //console.log("Error in getBooks(): ", err);
                 resolve([{
                     volumeInfo: {
                         title: "Search Error. Please try again later."

@@ -11,7 +11,7 @@ function Saved() {
     const [renderList, setRenderList] = useState(false);
 
     useEffect(()=> {
-        console.log('useEffect is called.');
+        //console.log('useEffect is called.');
         API.getSavedBooks()
         .then((res)=>{
             // console.log("books", res);
@@ -29,7 +29,7 @@ function Saved() {
     // This function is called from <Book /> 
     // This is called when "Delete" button is clicked.
     function triggerRenderList() {
-        console.log("triggerRenderList() called")
+        //console.log("triggerRenderList() called")
         setRenderList(true); // Setting true invokes rendering Book List
     }
 

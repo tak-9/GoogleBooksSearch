@@ -11,7 +11,7 @@ module.exports = function (app) {
                 res.json(dbResult);
             })
             .catch((err)=> {
-                console.log(err);
+                //console.log(err);
                 res.json(500).json(err);
             });
     });
@@ -26,20 +26,20 @@ module.exports = function (app) {
             res.status(200).json(dbResult);
         })
         .catch((err) => {
-            console.log("insert err", err);
+            //console.log("insert err", err);
             res.status(500).json(err);
         });
     });
 
     app.delete("/api/book/:id", (req, res) => {
-        console.log("DELETE /api/book is called.", req.params);
+        //console.log("DELETE /api/book is called.", req.params);
         db.Googlebooks.findByIdAndRemove(req.params.id)
         .then((dbResult) => {
-            console.log("delete ok", dbResult);
+            //console.log("delete ok", dbResult);
             res.status(200).json(dbResult);
         })
         .catch((err) => {
-            console.log("delete err", err);
+            //console.log("delete err", err);
             res.status(500).json(err);
         });
     });

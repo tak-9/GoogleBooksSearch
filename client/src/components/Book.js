@@ -3,34 +3,58 @@ import imageNotAvail from "../img/no_cover_thumb.gif";
 import * as API from "../utils/API"
 
 function Book(props) {
-    // console.log("Book props", props);
+    console.log("Book props", props);
     const {title, authors, description, smallThumbnail, infoLilnk} = props.data;
     
     const saveButtonHandler = () => {
-        console.log("saveButtonHandler");
+        // console.log("saveButtonHandler");
         API.saveBook(props.data);
     };
+
+    const deleteButtonHandler = () => {
+        console.log("deleteButtonHandler");
+        API.deleteBook(props.data._id);
+        props.triggerRenderList();   
+    };
+
+    // Display "Delete" button for Saved page. "Save" for Search page.
+    var saveOrDeleteButton;
+    if (props.deleteButton){
+        saveOrDeleteButton = (
+            <button onClick={deleteButtonHandler} className="btn btn-primary" style={{ marginLeft: '.5rem' }}>
+            Delete
+            </button>
+        )
+    } else {
+        saveOrDeleteButton = (
+            <button onClick={saveButtonHandler} className="btn btn-primary" style={{ marginLeft: '.5rem' }}>
+            Save
+            </button>
+        )
+    } 
+
+    var smallThumbnailDisplay;
+    // Display replcement thumbnail image if Google book API does not provide it. 
+    (smallThumbnail === "NoImage") ? smallThumbnailDisplay = imageNotAvail : smallThumbnailDisplay = smallThumbnail;
 
     return (
         <div className="card mb-3">
             <div className="card-body">
                 <div className="row mb-3">
-                    <div className="col-md-9">
+                    <div className="col-md-7">
                         <h4 className="card-title font-italic">{title}</h4>
                         <span className="font-italic">Written by {authors.join(', ')}</span>
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-md-5">
                         <div className="pull-right">
                             <a href={infoLilnk} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Detail</a>
-                            <button onClick={saveButtonHandler} className="btn btn-primary" style={{ marginLeft: '.5rem' }}>
-                                Save
-                            </button>
+                            {saveOrDeleteButton}
                         </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md-2">
-                        <img className="img-fluid" src={smallThumbnail} alt="Thumbnail" width="128" />
+                        <img className="img-fluid" src={smallThumbnailDisplay} alt="Thumbnail" width="128" />
                     </div>
                     <div className="col-md-10">
                         <p className="card-text">{description}</p>

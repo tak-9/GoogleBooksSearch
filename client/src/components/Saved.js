@@ -7,6 +7,8 @@ function Saved() {
     const [books, setBooks] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [isError, setIsError] = useState(false);
+    // Flag to invoke rendering of Book List. Render the Book List when this is set to "true"
+    const [renderList, setRenderList] = useState(false);
 
     useEffect(()=> {
         console.log('useEffect is called.');
@@ -15,13 +17,21 @@ function Saved() {
             // console.log("books", res);
             setBooks(res);
             setIsLoaded(true);
+            setRenderList(false); // Need to reset after useEffect runs 
         })
         .catch((err)=>{
             setIsLoaded(true);
             setIsError(true);
+            setRenderList(false); // Need to reset after useEffect runs
         });
-    },[]);
+    },[renderList]);
 
+    // This function is called from <Book /> 
+    // This is called when "Delete" button is clicked.
+    function triggerRenderList() {
+        console.log("triggerRenderList() called")
+        setRenderList(true); // Setting true invokes rendering Book List
+    }
 
     if (isError) { 
         return (
@@ -31,13 +41,12 @@ function Saved() {
         )
     } else if (!isLoaded) {
         return (<div className="container">
-            Loading...
             </div>)
-    } else {
+    } else if (isLoaded) {
         return (
             <div className="container">
                 {books.map((book, index)=>{
-                   return <Book key={index} data={book} />
+                   return <Book key={index} data={book} deleteButton={true} triggerRenderList={triggerRenderList}/>
                 })}
             </div>
         )    

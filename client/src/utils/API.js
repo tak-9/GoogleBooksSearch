@@ -1,9 +1,6 @@
 import axios from "axios";
 var serverUrl =  "http://localhost:3001";
 
-function isUndefined(property) {
-    return (typeof property) ? " ": property;
-}
 
 export const getBooks = (title) => {
     return new Promise(function(resolve, reject){
@@ -12,7 +9,7 @@ export const getBooks = (title) => {
             .then((res)=>{
                 console.log("Response from URL: ", url, res.data.items);
                 var booksInfo = [];
-                res.data.items.map((item)=>{
+                booksInfo = res.data.items.map((item)=>{
                     // Format received data
                     const title = (typeof item.volumeInfo.title === "undefined") ? " " : item.volumeInfo.title;
                     const authors = (typeof item.volumeInfo.authors === "undefined") ? [] : item.volumeInfo.authors;
@@ -21,7 +18,7 @@ export const getBooks = (title) => {
                     const smallThumbnail = (typeof item.volumeInfo.imageLinks === "undefined" ? "NoImage" : item.volumeInfo.imageLinks.smallThumbnail);
                     const infoLilnk = (typeof item.volumeInfo.infoLink === "undefined") ? " " : item.volumeInfo.infoLink;
                     const bookInfo = {title, authors, description, smallThumbnail, infoLilnk};
-                    booksInfo.push(bookInfo);
+                    return bookInfo;
                 });
                 //console.log("API booksInfo",booksInfo);
                 resolve(booksInfo);
@@ -57,6 +54,26 @@ export const getSavedBooks = (title) => {
     return new Promise(function(resolve, reject){
         var url =  serverUrl + "/api/book";
         axios.get(url)
+            .then((res)=>{
+                console.log("Response from URL: ", url, res);
+                resolve(res.data);
+            })
+            .catch((err)=>{
+                console.log("Error in getBooks(): ", err);
+                resolve([{
+                    volumeInfo: {
+                        title: "Search Error. Please try again later."
+                    }
+                }]);
+            })     
+    })
+}
+
+export const deleteBook = (id) => {
+    return new Promise(function(resolve, reject){
+        console.log("API.deleteBook()");
+        var url =  serverUrl + "/api/book/" + id;
+        axios.delete(url)
             .then((res)=>{
                 console.log("Response from URL: ", url, res);
                 resolve(res.data);

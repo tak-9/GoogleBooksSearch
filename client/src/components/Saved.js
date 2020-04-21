@@ -11,7 +11,7 @@ function Saved() {
     const [renderList, setRenderList] = useState(false);
 
     useEffect(()=> {
-        //console.log('useEffect is called.');
+        console.log('useEffect is called.');
         API.getSavedBooks()
         .then((res)=>{
             // console.log("books", res);
@@ -36,7 +36,7 @@ function Saved() {
     if (isError) { 
         return (
         <div className="container">
-            Error
+            Error while getting saved book.
         </div>
         )
     } else if (!isLoaded) {

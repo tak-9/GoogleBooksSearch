@@ -1,6 +1,10 @@
 import axios from "axios";
-var serverUrl =  "http://localhost:3001";
 
+var serverUrl =  "http://localhost:3001";
+// (change serverUrl on heroku)
+if (process.env.NODE_ENV === "production") {
+    serverUrl =  "";
+}
 
 export const getBooks = (title) => {
     return new Promise(function(resolve, reject){
@@ -26,9 +30,7 @@ export const getBooks = (title) => {
             })
             .catch((err)=>{
                 //console.log("Error in getBooks(): ", err);
-                resolve([{
-                    title: "Search Error. Please try again later."
-                }]);
+                reject();
             })     
     })
 }
@@ -44,7 +46,7 @@ export const saveBook = (book) => {
             })
             .catch((err)=>{
                 //console.log("Error in saveBook(): ", err);
-                resolve();
+                reject();
             })     
     })
 }
@@ -59,11 +61,7 @@ export const getSavedBooks = (title) => {
             })
             .catch((err)=>{
                 //console.log("Error in getBooks(): ", err);
-                resolve([{
-                    volumeInfo: {
-                        title: "Search Error. Please try again later."
-                    }
-                }]);
+                reject();
             })     
     })
 }
@@ -78,11 +76,7 @@ export const deleteBook = (id) => {
             })
             .catch((err)=>{
                 //console.log("Error in getBooks(): ", err);
-                resolve([{
-                    volumeInfo: {
-                        title: "Search Error. Please try again later."
-                    }
-                }]);
+                reject();
             })     
     })
 }

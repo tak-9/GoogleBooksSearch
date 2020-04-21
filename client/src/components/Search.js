@@ -9,11 +9,9 @@ function Search() {
 
     const handleClick = e => {
         e.preventDefault();
-        var books = [];
         API.getBooks(keyword)
-        .then((books)=>{
-            console.log("books", books);
-            setBooks(books)
+        .then((res)=>{
+            setBooks(res)
         });
     }
 

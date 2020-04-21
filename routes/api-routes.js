@@ -1,3 +1,4 @@
+const path = require("path");
 const db = require("../models");
 
 module.exports = function (app) {
@@ -44,6 +45,10 @@ module.exports = function (app) {
         });
     });
 
+    // This "*" must be at the bottom so that the above routes work.
+    app.get("*", function(req, res) {
+        res.sendFile(path.join(__dirname, "../client/build/index.html"));
+    });
 
 
 };

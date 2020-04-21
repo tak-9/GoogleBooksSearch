@@ -45,10 +45,5 @@ module.exports = function (app) {
         });
     });
 
-    // This "*" must be at the bottom so that the above routes work.
-    app.get("*", function(req, res) {
-        res.sendFile(path.join(__dirname, "../client/build/index.html"));
-    });
-
 
 };

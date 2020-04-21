@@ -7,12 +7,23 @@ function Book(props) {
     const {title, authors, description, smallThumbnail, infoLilnk} = props.data;
     
     const saveButtonHandler = () => {
-        API.saveBook(props.data);
+        API.saveBook(props.data)
+        .then((res)=>{
+            alert("Save successful");
+        })
+        .catch(()=>{
+            alert("Error in Saving book.");
+        })
     };
 
     const deleteButtonHandler = () => {
-        API.deleteBook(props.data._id);
-        props.triggerRenderList();   
+        API.deleteBook(props.data._id)
+        .then((res)=>{
+            props.triggerRenderList();   
+        })
+        .catch(()=>{
+            alert("Error in delete.");
+        })
     };
 
     // Display "Delete" button for Saved page. "Save" for Search page.

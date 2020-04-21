@@ -6,15 +6,20 @@ import * as API from "../utils/API";
 function Search() {
     const [keyword, setKeyword] = useState();
     const [books, setBooks] = useState([]);
-
+    const [errorMsg, setErrorMsg] = useState("");
     const handleClick = e => {
         e.preventDefault();
         API.getBooks(keyword)
         .then((res)=>{
             setBooks(res)
+            setErrorMsg("");
+        })
+        .catch((err)=>{
+            setErrorMsg("Error in accessing Google's Book API.");
         });
     }
 
+    // Execute Search by Enter Key 
     const handleKeyPress = e => {
         if (e.key === "Enter") {
             handleClick(e);
@@ -36,6 +41,7 @@ function Search() {
                     <button type="submit" className="btn btn-dark" onClick={handleClick}>Search</button>
                 </div>
             </div> {/* end Card */}
+            <div>{errorMsg}</div>
             <p/>
            {books.map((book, index)=>{
                return <Book key={index} data={book} />

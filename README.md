@@ -18,6 +18,19 @@ https://google-books-takuji.herokuapp.com/
 
    * Saved - Renders all books saved to the Mongo database. User has an option to "View" the book, bringing them to the book on Google Books, or "Delete" a book, removing it from the Mongo database.
 
+## Future Development
+
+* Replace `alert()` with Bootstrap modal. Use react [context](https://reactjs.org/docs/context.html) to update a message in Modal component. [useContext](https://reactjs.org/docs/hooks-reference.html#usecontext).
+
+* Use "[Proxying API Requests in Development](https://create-react-app.dev/docs/proxying-api-requests-in-development/)" for development environment.
+
+* Use React routing and [socket.io](http://socket.io) to create a notification or a component that triggers whenever a user saves an book. A message should include the title of the saved book.
+
+  * Say you have multiple browsers open, each one visiting your site. If you save an book in one browser, then all of your browsers should notify you that a new book was saved.
+
+  * [Socket.io NPM package](https://www.npmjs.com/package/socket.io)
+
+
 ## React  :atom_symbol:
 [React Hooks](https://reactjs.org/docs/hooks-intro.html) useState, useEffect are used to implement it without Class. 
 

@@ -10,6 +10,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={SearchPage} />
           <Route exact path="/saved" component={SavedPage} />
+          <Route exact path="*" component={SearchPage} />
         </Switch>
       </BrowserRouter>
     </div>

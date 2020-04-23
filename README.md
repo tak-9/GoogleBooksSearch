@@ -1,6 +1,8 @@
 # Google Books Search :blue_book: :mag_right:
+
 This is a React-based Google Books Search app. A user can search and save books to consider which one to puchase  later. 
 
+<img src="./readme/google_books_logo.png"> 
 
 ## Live demo :earth_asia:
 The application has been deployed to heroku. 

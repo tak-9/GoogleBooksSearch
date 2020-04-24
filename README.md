@@ -27,6 +27,13 @@ https://google-books-takuji.netlify.app/
 ## React  :atom_symbol:
 [React Hooks](https://reactjs.org/docs/hooks-intro.html) useState, useEffect are used to implement it without Class. 
 
+## Deployment to Netlify 
+As heroku server may get very slow on 'free' plan, I have deployed React front-end to Netlify. The back-end API and MongoDB are hosted on heroku. This site is a good guide to [start]. As React router does not work on Netlify by default, a file called `_redirects` has to be created inside the build folder. See this [site](https://medium.com/@rexben/how-to-fix-page-not-found-on-netlify-with-react-router-dom-e0520692be5). 
+I have edited package.json to generate this file automatically when it's deployed to netlify.
+
+`    "build-netlify": "cd client && npm run build && echo '/* /index.html 200' | cat >build/_redirects"`
+
+Specify `npm run build-netlify` in deploy setting of Netlify to generate `_redirects` on deployment.   
 
 ## Future Development
 

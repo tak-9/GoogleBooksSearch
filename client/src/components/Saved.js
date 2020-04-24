@@ -40,8 +40,14 @@ function Saved() {
         </div>
         )
     } else if (!isLoaded) {
-        return (<div className="container">
-            </div>)
+        // Show waiting icon while loading...
+        return (
+        <div className="container">
+            <div class="spinner-border text-info" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        )
     } else if (isLoaded) {
         return (
             <div className="container">

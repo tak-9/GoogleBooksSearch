@@ -9,8 +9,11 @@ The application has been deployed to heroku.
 
 https://google-books-takuji.herokuapp.com/
 
-<img src="./readme/screencapture.jpg" width="850px">
+The react front-end has also been deployed to Nelify for faster access. The same app can also be accessed from here. 
 
+https://google-books-takuji.netlify.app/
+
+<img src="./readme/screencapture.jpg" width="850px">
 
 ## Functionalities
 

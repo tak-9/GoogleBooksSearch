@@ -3,7 +3,7 @@ import axios from "axios";
 var serverUrl =  "http://localhost:3001";
 // (change serverUrl on heroku)
 if (process.env.NODE_ENV === "production") {
-    serverUrl =  "https://google-books-takuji.herokuapp.com/";
+    serverUrl =  "https://google-books-takuji.herokuapp.com";
 } 
 
 export const getBooks = (title) => {

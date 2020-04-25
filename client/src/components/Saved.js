@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Book from './Book';
 import * as API from '../utils/API';
-
+import loading_icon from '../img/Loading_icon.gif';
 
 function Saved() {
     const [books, setBooks] = useState([]);
@@ -40,12 +40,11 @@ function Saved() {
         </div>
         )
     } else if (!isLoaded) {
-        // Show waiting icon while loading...
+        // Show waiting icon while loading...  
         return (
         <div className="container">
-            <div class="spinner-border text-info" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
+            Please wait while getting saved data from heroku.<p/>
+            <img src={loading_icon} />
         </div>
         )
     } else if (isLoaded) {

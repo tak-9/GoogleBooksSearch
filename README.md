@@ -5,11 +5,11 @@ This is a React-based Google Books Search app. A user can search and save books 
 <img src="./readme/google_books_logo.png"> 
 
 ## Live demo :earth_asia:
-The application has been deployed to heroku. 
+The application has been deployed to [heroku](https://www.heroku.com/). 
 
 https://google-books-takuji.herokuapp.com/
 
-The react front-end has also been deployed to Nelify for faster access. The same app can also be accessed from here. 
+The react front-end has also been deployed to [Nelify](https://www.netlify.com/) for faster access. The same app can also be accessed from here. 
 
 https://google-books-takuji.netlify.app/
 
@@ -28,7 +28,7 @@ https://google-books-takuji.netlify.app/
 [React Hooks](https://reactjs.org/docs/hooks-intro.html) useState, useEffect are used to implement it without Class. 
 
 ## Deployment to Netlify 
-As heroku server may get very slow on 'free' plan, I have deployed React front-end to Netlify. The back-end API and MongoDB are hosted on heroku. This site is a good guide to [start]. As React router does not work on Netlify by default, a file called `_redirects` has to be created inside the build folder. See this [site](https://medium.com/@rexben/how-to-fix-page-not-found-on-netlify-with-react-router-dom-e0520692be5). 
+As heroku server may get very slow on 'free' plan, I have deployed React front-end to [Netlify](https://www.netlify.com/). The back-end API and MongoDB are hosted on heroku. This site is a good guide to [start]. As React router does not work on Netlify by default, a file called `_redirects` has to be created inside the build folder. See this [site](https://medium.com/@rexben/how-to-fix-page-not-found-on-netlify-with-react-router-dom-e0520692be5). 
 I have edited package.json to generate this file automatically when it's deployed to netlify.
 
 `    "build-netlify": "cd client && npm run build && echo '/* /index.html 200' | cat >build/_redirects"`

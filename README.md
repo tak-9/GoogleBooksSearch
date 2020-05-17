@@ -39,6 +39,7 @@ In Netlify admin screen, go to Settings > Build & Deploy > Continuous Deployment
 * Base directory: client
 * Publish directory: /client/build
 
+Netlify is updated when a file is pushed to github.
 
 ## Future Development
 

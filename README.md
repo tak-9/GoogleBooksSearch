@@ -28,7 +28,10 @@ https://google-books-takuji.netlify.app/
 [React Hooks](https://reactjs.org/docs/hooks-intro.html) useState, useEffect are used to implement it without Class. 
 
 ## Deployment to Netlify 
-As heroku server may get very slow on 'free' plan, I have deployed React front-end to [Netlify](https://www.netlify.com/). The back-end API and MongoDB are hosted on heroku. As React router does not work on Netlify by default, a file called `_redirects` with the following content has to be created inside the build folder. See [this](https://medium.com/@rexben/how-to-fix-page-not-found-on-netlify-with-react-router-dom-e0520692be5) article.
+As heroku server may get very slow on 'free' plan, I have deployed React front-end to [Netlify](https://www.netlify.com/). The back-end API and MongoDB are hosted on heroku. 
+
+### Setup for Deployment on Netlify
+Create a new site on Netlify by clicking "New Site from Git". Choose this repositor to create a new site. As React router does not work on Netlify by default, a file called `_redirects` with the following content has to be created inside the build folder. See [this](https://medium.com/@rexben/how-to-fix-page-not-found-on-netlify-with-react-router-dom-e0520692be5) article.
 
 `/*    /index.html   200`
 

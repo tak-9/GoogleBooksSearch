@@ -43,7 +43,7 @@ Netlify is updated when a file is pushed to github.
 
 ## Future Development
 
-* Replace JavaScript `alert()` with Bootstrap [modal](https://getbootstrap.com/docs/4.0/components/modal/). Use react [context](https://reactjs.org/docs/context.html) to update a message in Modal component. Refer to [`useContext()`](https://reactjs.org/docs/hooks-reference.html#usecontext).
+* Replace JavaScript `alert()` with Bootstrap [modal](https://getbootstrap.com/docs/4.0/components/modal/).
 
 
 ## Technolgies
@@ -51,6 +51,11 @@ Following technologies are used for this application.
 
 * [React](https://reactjs.org/), [Bootstrap](https://getbootstrap.com/)
 * [Node.js](https://nodejs.org), [Express](https://expressjs.com/), [MongoDB](https://www.mongodb.com/)
+
+
+## Move MongoDB from mLab to MongoDB Atlas
+[The mLab MongoDB add-on will be removed from all Heroku apps on November 10, 2020.](https://devcenter.heroku.com/changelog-items/1823)
+[MongoDB Atlas Sandbox](https://www.mongodb.com/cloud/atlas) is now used for alternative. 
 
 
 ## Credit 
